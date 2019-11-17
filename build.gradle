@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'war'
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+	compile 'org.apache.tomcat:tomcat-dbcp:9.0.1'
+	compile 'com.google.code.gson:gson:2.8.6'
+    providedCompile 'javax.servlet:jsp-api:2.0'
+    
+}
+
+group = 'ru.mycash'
+version = '0.0.1'
+description = 'mycash'
+sourceCompatibility = '1.8'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+war {
+    enabled=true
+}
